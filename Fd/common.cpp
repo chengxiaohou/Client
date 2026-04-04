@@ -969,17 +969,16 @@ void initOld70Hub(int mapX, int mapY) {
 
 	GumInterceptor* v = gum_interceptor_obtain();
 
-	// 暂时屏蔽插件接管原生系统主菜单的逻辑
-	// gum_interceptor_replace_fast(v, (gpointer)0x4F2220, (gpointer)hookShowSettingWinByIdx_4F2220, (gpointer*)&showSettingWinByIdx_4F2220);
-	// gum_interceptor_replace_fast(v, (gpointer)0x4F1510, (gpointer)hookOpenSettingsWin_4F1510, (gpointer*)&openSettingsWin_4F1510);
+	gum_interceptor_replace_fast(v, (gpointer)0x4F2220, (gpointer)hookShowSettingWinByIdx_4F2220, (gpointer*)&showSettingWinByIdx_4F2220);
+	gum_interceptor_replace_fast(v, (gpointer)0x4F1510, (gpointer)hookOpenSettingsWin_4F1510, (gpointer*)&openSettingsWin_4F1510);
 
 	//writeCallCode((LPVOID*)0x00E79553, (PVOID)hookCloseNavigationWin);//ESC 关闭窗口
-	// writeCallCode((LPVOID*)0x00E777CE, (PVOID)hookCloseNavigationWin);//打开其他弹窗时，关闭窗口
-	// writeCallCode((LPVOID*)0x00E71146, (PVOID)hookCloseNavigationWin);//跟随以前的关闭窗口逻辑
-	// writeCallCode((LPVOID*)0x004C6809, (PVOID)hookShowNavigationWin);//系统设置按钮
-	// writeCallCode((LPVOID*)0x004C6810, (PVOID)hookShowNavigationWin);//系统设置按钮
-	// *(BYTE*)0x004BC40E = 1;//不禁用系统设置按钮
-	writeCallCode((LPVOID*)0x004D4415, (PVOID)hookProcNavigationBtnEven_4D4415); // 保留这个因为里面绑定了额外的物品使用功能
+	writeCallCode((LPVOID*)0x00E777CE, (PVOID)hookCloseNavigationWin);//打开其他弹窗时，关闭窗口
+	writeCallCode((LPVOID*)0x00E71146, (PVOID)hookCloseNavigationWin);//跟随以前的关闭窗口逻辑
+	writeCallCode((LPVOID*)0x004C6809, (PVOID)hookShowNavigationWin);//系统设置按钮
+	writeCallCode((LPVOID*)0x004C6810, (PVOID)hookShowNavigationWin);//系统设置按钮
+	*(BYTE*)0x004BC40E = 1;//不禁用系统设置按钮
+	writeCallCode((LPVOID*)0x004D4415, (PVOID)hookProcNavigationBtnEven_4D4415);
 	gum_interceptor_replace_fast(v, (gpointer)0xED08A0, (gpointer)hookOpenQuestWin_ED08A0, (gpointer*)&openQuestWin_ED08A0);
 
 	//24 26 41 42
