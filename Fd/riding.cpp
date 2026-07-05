@@ -559,9 +559,9 @@ void ridingInit(void) {
     //npc 对话窗口修复
     writeJmpCode((void*)0x00FBB28D, fixRidableQuestLabelNpcDialog);
     writeJmpCode((void*)0x00ECDE4C, fixRidableQuestLabelDetailSubWin);
-    //变身额外技能框 (这也同时是支援兵的气泡组件，如果不注释掉，支援兵也会被一起挪走而产生异常甚至变得不可见)
-    // *(DWORD*)0x004C92BE = 634 * 0.8f + 5;//x
-    // *(DWORD*)0x004C92B9 = 489 * 0.8f + 5;//y
+    //变身额外技能框
+    *(DWORD*)0x004C92BE = 634 * 0.8f + 5;//x
+    *(DWORD*)0x004C92B9 = 489 * 0.8f + 5;//y
     int typeInfoLen = 0x0170FC38 - 0x0170F3C8;
     myCNRidableObjectTypeInfo = (int*)malloc(typeInfoLen);
     if (myCNRidableObjectTypeInfo == NULL) {
