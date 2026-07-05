@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 jobs:
   build-client:
-    runs-on: windows-latest
+    runs-on: windows-2022
     permissions:
       contents: write
 
