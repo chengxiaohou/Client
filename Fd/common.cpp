@@ -1,4 +1,4 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "common.h"
 #include "skillCommon.h"
 #include "tools.h"
@@ -877,9 +877,6 @@ void drawMap(int* minimapImg) {
 	innerDrawImg_11DB180((int*)getImageByPos_11B4BD0(minimapImg, 2), OldMinMapX - 100, 0, *(int*)0x1B5582C);
 }
 int __fastcall drawOldMiniMap(int* thisP, int edx) {
-	int* minimapImg = (int*)getPreloadImg_11BB1B0(*(int**)0x1A6A870, 23);
-	drawMap(minimapImg);
-	drawChampKeyFx(minimapImg);
 	return sub_4C4070(thisP);
 }
 
