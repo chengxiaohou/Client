@@ -1,4 +1,4 @@
-﻿// dllmain.cpp : 定义 DLL 应用程序的入口点。
+// dllmain.cpp : 定义 DLL 应用程序的入口点。
 #include "pch.h"
 #include "common.h"
 #include <winuser.h>
@@ -676,7 +676,7 @@ char __fastcall hookCNMainGameModule_onEnterModule_110D6E0(int* thisP, int edx, 
     int* dungeon = (int*)getDungeonObj_75C610((int*)getCNModule_706410());
     int* map = (int*)dungeon[0x23];
     currentDungeonId = map[0x29];
-    setUiComponentVisable_11BE610(getMiniMapBtn(), map[0x29] < 40001 || map[0x29] > 40095);
+    setUiComponentVisable_11BE610(getMiniMapBtn(), 0);
     common_CNMainGameModule_onEnterModuleCb(thisP, a2);
     goldSkill_CNMainGameModule_onEnterModuleCb(thisP, a2);
     riding_CNMainGameModule_onEnterModuleCb(thisP, a2);

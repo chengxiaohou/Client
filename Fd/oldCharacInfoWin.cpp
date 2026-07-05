@@ -8,10 +8,6 @@ int __fastcall drawCharacInfoPropertyIcon(int* thisP, int startIdx, int x, int y
 	int idx = 2 * startIdx, idxIconPos = 0x1827104 + (8 * startIdx);
     int i = 8, v;
     do{
-        if (idx == 8) {
-            idx += 2;
-            idxIconPos += 8;
-        }
         if (idx < 32){
             v = RDWORD(idxIconPos, -4);
             if (v != -1){
@@ -43,9 +39,6 @@ int __fastcall drawCharacPropertyInfo(int* thisP) {
     startIdx *= 2;
     int line = 0;
     do{
-        if (startIdx == 8) {
-            startIdx += 2;
-        }
         if (startIdx < 32)
             drawCharacInfoPropertyData(thisP, startIdx, line);
         if (startIdx + 1 < 32)
@@ -58,10 +51,6 @@ int __fastcall drawCharacPropertyInfo(int* thisP) {
 
 thisCall1Args2 getCharacPropertyInfoToastText = (thisCall1Args2)0xFAE430;
 int __fastcall hookGetCharacPropertyInfoToastText(int *thisP, int, int idx){
-    if (idx >= 8 && idx <= 23) {
-        idx += 2;
-        __asm add edx, 2;
-    }
     return getCharacPropertyInfoToastText(thisP, idx);
 }
 
